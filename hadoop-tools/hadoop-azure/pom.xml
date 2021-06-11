@@ -21,7 +21,7 @@
     <relativePath>../../hadoop-project</relativePath>
   </parent>
   <artifactId>hadoop-azure</artifactId>
-  <version>3.3.0.SEE3</version>
+  <version>3.3.0.SEE4-SNAPSHOT</version>
   <name>Apache Hadoop Azure support</name>
   <description>
     This module contains code to support integration with Azure.
@@ -49,7 +49,7 @@
     <scm>
         <connection>scm:git:git@github.com:seeburger-ag/apache-hadoop.git</connection>
         <developerConnection>scm:git:git@github.com:seeburger-ag/apache-hadoop.git</developerConnection>
-        <tag>hadoop-azure-3.3.0.SEE3</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
@@ -327,8 +327,7 @@
                         project.getProperty("hadoop.tmp.dir")
                       ];
                       for (var i in baseDirs) {
-                        for (var j = 1; j <= ${testsThreadCount}; ++j) { var mkdir = project.createTask("mkdir"); mkdir.setDir(new java.io.File(baseDirs[i], j)); mkdir.perform(); } }
-                    ]]></script>
+                        for (var j = 1; j <= ${testsThreadCount}; ++j) { var mkdir = project.createTask("mkdir"); mkdir.setDir(new java.io.File(baseDirs[i], j)); mkdir.perform(); } } ]]></script>
                   </target>
                 </configuration>
                 <goals>
@@ -505,8 +504,7 @@
                         project.getProperty("hadoop.tmp.dir")
                       ];
                       for (var i in baseDirs) {
-                        for (var j = 1; j <= ${testsThreadCount}; ++j) { var mkdir = project.createTask("mkdir"); mkdir.setDir(new java.io.File(baseDirs[i], j)); mkdir.perform(); } }
-                    ]]></script>
+                        for (var j = 1; j <= ${testsThreadCount}; ++j) { var mkdir = project.createTask("mkdir"); mkdir.setDir(new java.io.File(baseDirs[i], j)); mkdir.perform(); } } ]]></script>
                   </target>
                 </configuration>
                 <goals>
@@ -666,8 +664,7 @@
                         project.getProperty("hadoop.tmp.dir")
                       ];
                       for (var i in baseDirs) {
-                        for (var j = 1; j <= ${testsThreadCount}; ++j) { var mkdir = project.createTask("mkdir"); mkdir.setDir(new java.io.File(baseDirs[i], j)); mkdir.perform(); } }
-                    ]]></script>
+                        for (var j = 1; j <= ${testsThreadCount}; ++j) { var mkdir = project.createTask("mkdir"); mkdir.setDir(new java.io.File(baseDirs[i], j)); mkdir.perform(); } } ]]></script>
                   </target>
                 </configuration>
                 <goals>
