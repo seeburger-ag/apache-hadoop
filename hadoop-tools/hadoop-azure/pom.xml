@@ -47,6 +47,26 @@
     <fs.azure.scale.test.list.performance.files>1000</fs.azure.scale.test.list.performance.files>
   </properties>
 
+    <scm>
+        <connection>scm:git:git@github.com:seeburger-ag/apache-hadoop.git</connection>
+        <developerConnection>scm:git:git@github.com:seeburger-ag/apache-hadoop.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>${release.repository.id}</id>
+            <name>Apache Release Distribution Repository</name>
+            <url>${release.repository.url}</url>
+        </repository>
+        <snapshotRepository>
+            <id>apache.snapshots.https</id>
+            <name>Apache Development Snapshot Repository</name>
+            <url>https://repository.apache.org/content/repositories/snapshots</url>
+            <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
+    </distributionManagement>
+
   <build>
     <plugins>
       <plugin>
@@ -63,12 +83,12 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-checkstyle-plugin</artifactId>
           <configuration>
-            <!-- To run with the default Sun ruleset, 
+            <!-- To run with the default Sun ruleset,
                  comment out the configLocation line -->
             <configLocation>src/config/checkstyle.xml</configLocation>
             <suppressionsLocation>src/config/checkstyle-suppressions.xml</suppressionsLocation>
           </configuration>
-          
+
       </plugin>
 
       <plugin>
@@ -83,27 +103,37 @@
         </executions>
       </plugin>
 
-       <plugin>
+<!--        <plugin> -->
+<!--         <groupId>org.apache.maven.plugins</groupId> -->
+<!--         <artifactId>maven-dependency-plugin</artifactId> -->
+<!--         <executions> -->
+<!--           <execution> -->
+<!--             <id>deplist</id> -->
+<!--             <phase>compile</phase> -->
+<!--             <goals> -->
+<!--               <goal>list</goal> -->
+<!--             </goals> -->
+<!--             <configuration> -->
+<!--               build a shellprofile -->
+<!--               <outputFile>${project.basedir}/target/hadoop-tools-deps/${project.artifactId}.tools-optional.txt</outputFile> -->
+<!--             </configuration> -->
+<!--           </execution> -->
+<!--         </executions> -->
+<!--       </plugin> -->
+
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>deplist</id>
-            <phase>compile</phase>
-            <goals>
-              <goal>list</goal>
-            </goals>
-            <configuration>
-              <!-- build a shellprofile -->
-              <outputFile>${project.basedir}/target/hadoop-tools-deps/${project.artifactId}.tools-optional.txt</outputFile>
-            </configuration>
-          </execution>
-        </executions>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <skip>true</skip>
+          <skipDeploy>true</skipDeploy>
+        </configuration>
       </plugin>
 
     </plugins>
 
-    
+
     <!--
        The following is to suppress a m2e warning in eclipse
        (m2e doesn't know how to handle maven-enforcer:enforce, so we have to tell m2e to ignore it)
@@ -148,13 +178,13 @@
       <scope>provided</scope>
     </dependency>
 
-    
+
     <dependency>
       <groupId>org.apache.httpcomponents</groupId>
       <artifactId>httpclient</artifactId>
       <scope>compile</scope>
     </dependency>
-    
+
     <dependency>
       <groupId>com.microsoft.azure</groupId>
       <artifactId>azure-storage</artifactId>
@@ -224,7 +254,7 @@
       <scope>test</scope>
       <type>test-jar</type>
     </dependency>
-    
+
     <dependency>
       <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-mapreduce-client-jobclient</artifactId>
