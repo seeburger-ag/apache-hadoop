@@ -23,6 +23,7 @@
     <relativePath>../../hadoop-project</relativePath>
   </parent>
   <artifactId>hadoop-azure</artifactId>
+  <version>3.3.4.SEE1-SNAPSHOT</version>
   <name>Apache Hadoop Azure support</name>
   <description>
     This module contains code to support integration with Azure.
